@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Commanders - Learning Portal</title>
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1E3A8A;
+            --accent: #F59E0B;
+            --success: #10B981;
+            --text-dark: #1E293B;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #D946EF 100%);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            color: #FFFFFF;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin: 10px 0 5px 0;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin: 0;
+            opacity: 0.95;
+        }
+
+        /* Banner Card */
+        .welcome-card {
+            background: linear-gradient(180deg, #FEF3C7 0%, #FDE68A 100%);
+            border: 4px solid #F59E0B;
+            border-radius: 20px;
+            padding: 20px 25px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+
+        .welcome-card h2 {
+            margin: 0 0 10px 0;
+            color: #B45309;
+            font-size: 24px;
+        }
+
+        .welcome-card p {
+            font-size: 16px;
+            color: #334155;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Grid Layout for Modules / Days */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .day-card {
+            background: #FFFFFF;
+            border-radius: 18px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #E2E8F0;
+        }
+
+        .day-card.active {
+            border-color: #3B82F6;
+        }
+
+        .day-card.active:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+        }
+
+        .day-card.locked {
+            opacity: 0.7;
+            background-color: #F8FAFC;
+        }
+
+        .card-badge {
+            background: #3B82F6;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+            align-self: center;
+        }
+
+        .day-card.locked .card-badge {
+            background: #94A3B8;
+        }
+
+        .day-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 5px 0 10px 0;
+            color: #1E293B;
+        }
+
+        .day-desc {
+            font-size: 14px;
+            color: #64748B;
+            margin-bottom: 20px;
+        }
+
+        .btn-launch {
+            display: inline-block;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+            transition: background 0.2s ease;
+        }
+
+        .btn-launch:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+
+        .btn-locked {
+            background: #CBD5E1;
+            color: #64748B;
+            cursor: not-allowed;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        footer {
+            margin-top: auto;
+            padding-top: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1> Alphabet Commanders</h1>
+        <p>USKids4Water English-Marathi Vocabulary Learning Portal</p>
+    </header>
+
+    <div class="welcome-card">
+        <h2>Welcome, Young Commanders! 🚀</h2>
+        <p>Select your practice day below to learn new English words, practice pronunciation with your microphone, build your spelling, and solve sentence puzzles!</p>
+    </div>
+
+    <div class="grid-container">
+
+        <div class="day-card active">
+            <span class="card-badge">Level 1 Module</span>
+            <div class="day-title">Day 1 Lesson</div>
+            <div class="day-desc">Master 5 foundational English words: Courage, Adventure, Journey, Tradition & Culture.</div>
+            <a href="https://meerabapat.github.io/USKids4Water-AlphaCommander/blob/main/2026/Day1.html" class="btn-launch" target="_blank">
+                Start Day 1 🚀
+            </a>
+        </div>
+
+        <div class="day-card locked">
+            <span class="card-badge">Coming Soon</span>
+            <div class="day-title">Day 2 Lesson</div>
+            <div class="day-desc">Expand your vocabulary with 5 new action words and interactive practice tools.</div>
+            <span class="btn-locked">Locked 🔒</span>
+        </div>
+
+        <div class="day-card locked">
+            <span class="card-badge">Coming Soon</span>
+            <div class="day-title">Day 3 Lesson</div>
+            <div class="day-desc">Challenge yourself with advanced vocabulary and sentence building games.</div>
+            <span class="btn-locked">Locked 🔒</span>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Alphabet Commanders Program &copy; 2026 | Powered by <a href="https://github.com/meerabapat/USKids4Water-AlphaCommander" target="_blank">USKids4Water</a></p>
+    </footer>
+
+</body>
+</html>
