@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alphabet Commanders - Learning Portal</title>
+
+    <!-- Google Analytics 4 (GA4) Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <style>
         :root {
             --primary: #2563EB;
@@ -72,6 +83,21 @@
             margin: 0;
         }
 
+        .visitor-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: #FFFFFF;
+            color: #B45309;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-top: 15px;
+            border: 1px solid #F59E0B;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
         /* Grid Layout for Modules / Days */
         .grid-container {
             display: grid;
@@ -105,11 +131,6 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.25);
         }
 
-        .day-card.locked {
-            opacity: 0.7;
-            background-color: #F8FAFC;
-        }
-
         .card-badge {
             background: #3B82F6;
             color: white;
@@ -120,10 +141,6 @@
             display: inline-block;
             margin-bottom: 10px;
             align-self: center;
-        }
-
-        .day-card.locked .card-badge {
-            background: #94A3B8;
         }
 
         .day-title {
@@ -156,16 +173,6 @@
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
         }
 
-        .btn-locked {
-            background: #CBD5E1;
-            color: #64748B;
-            cursor: not-allowed;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
         footer {
             margin-top: auto;
             padding-top: 30px;
@@ -190,69 +197,77 @@
     <div class="welcome-card">
         <h2>Welcome, Young Commanders! 🚀</h2>
         <p>Select your practice day below to learn new English words, practice pronunciation with your microphone, build your spelling, and solve sentence puzzles!</p>
+        
+        <div class="visitor-pill">
+            <span>👀 Total Visits:</span>
+            <span id="visit-counter">...</span>
+        </div>
     </div>
 
     <div class="grid-container">
-
         <div class="day-card active">
             <span class="card-badge">Level 1 Module</span>
             <div class="day-title">Day 1 Lesson</div>
             <div class="day-desc">Master words 1–5: Courage, Adventure, Journey, Tradition & Culture.</div>
-            <a href="Day1.html" class="btn-launch">
-                Start Day 1 🚀
-            </a>
+            <a href="Day1.html" class="btn-launch">Start Day 1 🚀</a>
         </div>
         
         <div class="day-card active">
             <span class="card-badge">Level 1 Module</span>
             <div class="day-title">Day 2 Lesson</div>
             <div class="day-desc">Master words 6–10: Festival, Invention, Knowledge, Success & Responsibility.</div>
-            <a href="Day2.html" class="btn-launch">
-                Start Day 2 🚀
-            </a>
+            <a href="Day2.html" class="btn-launch">Start Day 2 🚀</a>
         </div>
 
         <div class="day-card active">
             <span class="card-badge">Level 1 Module</span>
             <div class="day-title">Day 3 Lesson</div>
             <div class="day-desc">Master words 11–15: Friendship, Environment, Community, Teamwork and Respect.</div>
-            <a href="Day3.html" class="btn-launch">
-                Start Day 3 🚀
-            </a>
+            <a href="Day3.html" class="btn-launch">Start Day 3 🚀</a>
         </div>
 
         <div class="day-card active">
             <span class="card-badge">Level 1 Module</span>
             <div class="day-title">Day 4 Lesson</div>
             <div class="day-desc">Master words 16–20: Teacher, Student, Library, Project, Discover.</div>
-            <a href="Day4.html" class="btn-launch">
-                Start Day 4 🚀
-            </a>
+            <a href="Day4.html" class="btn-launch">Start Day 4 🚀</a>
         </div>
 
         <div class="day-card active">
             <span class="card-badge">Level 1 Module</span>
             <div class="day-title">Day 5 Lesson</div>
             <div class="day-desc">Master words 21–25: Protect, Explain, Curious, Honest, Brave.</div>
-            <a href="Day5.html" class="btn-launch">
-                Start Day 5 🚀
-            </a>
+            <a href="Day5.html" class="btn-launch">Start Day 5 🚀</a>
         </div>
 
         <div class="day-card active">
             <span class="card-badge">Level 1 Module</span>
             <div class="day-title">Day 6 Lesson</div>
             <div class="day-desc">Master words 26–30: Helpful, Beautiful, Important, Together, Carefully.</div>
-            <a href="Day6.html" class="btn-launch">
-                Start Day 6 🚀
-            </a>
+            <a href="Day6.html" class="btn-launch">Start Day 6 🚀</a>
         </div>
-
     </div>
 
     <footer>
         <p>Alphabet Commanders Program &copy; 2026 | Powered by <a href="https://github.com/meerabapat/USKids4Water-AlphaCommander" target="_blank">USKids4Water</a></p>
     </footer>
 
+    <!-- Public Visit Counter Script -->
+    <script>
+        async function fetchVisits() {
+            try {
+                const response = await fetch('https://api.counterapi.dev/v1/uskids4water-alphacommander/index/up');
+                const data = await response.json();
+                if (data && data.count !== undefined) {
+                    document.getElementById('visit-counter').innerText = data.count.toLocaleString();
+                } else {
+                    document.getElementById('visit-counter').innerText = '1+';
+                }
+            } catch (err) {
+                document.getElementById('visit-counter').innerText = '1+';
+            }
+        }
+        fetchVisits();
+    </script>
 </body>
 </html>
